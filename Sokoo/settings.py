@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+z@wmpz&k12*-uoxup*sh^2ijjz8iya993!*wgic$-$uss_lgt'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['.onrender.com' ]
 
@@ -123,8 +123,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR , 'static']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
